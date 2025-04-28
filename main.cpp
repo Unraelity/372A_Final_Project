@@ -54,7 +54,7 @@ enum led_display {
 };
 
 // variable definitions
-car_movement carMovementState = stopped;
+car_movement carMovementState = accelerating;
 car_dir carDirState = forward;
 led_display faceState = smiley_face;
 uint16_t carSpeed = 0;
