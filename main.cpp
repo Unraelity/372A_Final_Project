@@ -1,6 +1,6 @@
 // Author(s):       Benjamin Feuerborn, Tyler Dye, Nick Brown, Abdullah Al Shumais
 // Due Date:        5/5/25
-// Assignment:      Final Projec
+// Assignment:      Final Project
 //----------------------------------------------------------------------
 
 #include <Arduino.h>
