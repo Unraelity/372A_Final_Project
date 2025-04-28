@@ -28,6 +28,8 @@ bool IsSpeedAtLeastMin();
 bool IsWithinStopProximity();
 void CheckTurnThreshold();
 void GetCarDirection();
+void TurnRight();
+void TurnLeft();
 
 // enum definitions
 // state machine that controls car movement (acceleration, decceleration, constant and stopped)
@@ -119,22 +121,10 @@ void HandleTurnLogic() {
       CheckTurnThreshold();
       break;
     case right:
-      if (IsWithinStopProximity()) {
-        turnRight();
-      }
-      else {
-        moveForward();
-        carDirState = forward;
-      }
+      TurnRight();
       break;
     case left:
-      if (IsWithinStopProximity) {
-        turnLeft();
-      }
-      else {
-        moveForward();
-        carDirState = forward;
-      }
+      TurnLeft();
       break;
   }
 }
@@ -213,5 +203,27 @@ void GetCarDirection() {
   else {
     carDirState = right;
     lastTurnedDirection = right;
+  }
+}
+
+void TurnRight() {
+
+  if (IsWithinStopProximity()) {
+    turnRight();
+  }
+  else {
+    moveForward();
+    carDirState = forward;
+  }
+}
+
+void TurnLeft() {
+
+  if (IsWithinStopProximity()) {
+    turnLeft();
+  }
+  else {
+    moveForward();
+    carDirState = forward;
   }
 }
