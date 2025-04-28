@@ -12,7 +12,12 @@
 #define ACCELERATION_RATE 1  // per loop
 
 // funciton definitions
+void HandleMotorLogic();
 void HandleFaceLogic();
+void Accerate();
+void Deccerate();
+bool IsSpeedUnderMax();
+bool IsSpeedAtLeastMin();
 
 // enum definitions
 enum car_movement {
@@ -28,7 +33,9 @@ enum led_display {
 };
 
 // variable definitions
+car_movement carState = stopped;
 led_display faceState = smiley_face;
+uint16_t carSpeed = 0;
 
 int main() {
 
@@ -49,6 +56,25 @@ int main() {
   return 0;
 }
 
+void HandleMotorLogic() {
+
+  switch (carState) {
+    case cruising:
+      break;
+
+    case accelerating:
+      Accelerate();
+      break;
+
+    case deccerating:
+      Deccelerate();
+      break;
+
+    case stopped:
+      break;
+  }
+}
+
 void HandleFaceLogic() {
 
   switch (faceState) {
@@ -59,4 +85,42 @@ void HandleFaceLogic() {
       frown();
       break;
     }
+}
+
+void Accelerate() {
+
+  if (IsSpeedUnderMax()) {
+    carSpeed += ACCELERATION_RATE;
+  }
+  else {
+    carState = cruising;
+  }
+}
+
+void Deccelerate() {
+
+  if (IsSpeedAtLeastMin()) {
+    carSpeed -= ACCELERATION_RATE;
+  }
+  else {
+    carState = stopped;
+  }
+}
+
+bool IsSpeedUnderMax() {
+
+  if (carSpeed < MAX_DUTY_CYCLE) {
+    return true;
+  }
+
+  return false;
+}
+
+bool IsSpeedAtLeastMin() {
+
+  if (carSpeed >= MIN_DUTY_CYCLE) {
+    return true;
+  }
+
+  return false;
 }
