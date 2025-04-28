@@ -190,7 +190,7 @@ void CheckTurnThreshold() {
   // if below TURN_THRESHOLD:
     moveBackward();
     carDirState = backward;
-  // else
+  // else:
     GetCarDirection();
 }
 
