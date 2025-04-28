@@ -69,8 +69,25 @@ void turnRight() {
     PORTB |= (1 << PB3);
 }
 
+// stops over time
 void stopMotors() {
 
-    // sets both motors speed to 0
-    changeDutyCycle(0, 0);
+    // turn off left motor
+    PORTD &= ~(1 << PD7);
+    PORTB &= ~(1 << PB0);
+
+    // turn off right motor
+    PORTB &= ~(1 << PB1);
+    PORTB &= ~(1 << PB3);
+}
+
+void brake() {
+
+    // brake left wheel
+    PORTD |= (1 << PD7);
+    PORTB |= (1 << PB0);
+
+    // brake right wheel
+    PORTB |= (1 << PB1);
+    PORTB |= (1 << PB3);
 }
