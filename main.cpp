@@ -44,12 +44,15 @@ int main() {
   // initialization functions
   initPWMTimer3();
   initPWMTimer4();
+  // initialize SPI
+  initSPI();
+  // initialize Timer
+  initTimer0();
+  // initialize Motor
+  initMotorPins();
 
   // set baud rate for serial transmission, flush before printing anything
   Serial.begin(9600);
-
-  // initialize SPI
-  initSPI();
 
   while (1) {
 
