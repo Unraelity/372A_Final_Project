@@ -19,10 +19,10 @@ IN3      IN4      Motor B Behavior
 // initialize motor direction pins
 void initMotorPins() {
     
-    DDRD |= (1 << PD7);  // set D7 to ouput -> IN1
-    DDRB |= (1 << PB0);  // set B0 to ouput -> IN2
-    DDRB |= (1 << PB1);  // set B1 to ouput -> IN3
-    DDRB |= (1 << PB3);  // set B3 to ouput -> IN4
+    DDRD |= (1 << PD7);  // set D7 to output -> IN1
+    DDRB |= (1 << PB0);  // set B0 to output -> IN2
+    DDRB |= (1 << PB1);  // set B1 to output -> IN3
+    DDRB |= (1 << PB3);  // set B3 to output -> IN4
 }
 
 void moveForward() {
