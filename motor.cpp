@@ -28,46 +28,49 @@ void initMotorPins() {
 void moveForward() {
 
     // move left motor forward
-    PORTD |= (1 << PD7);   // IN1 HIGH
-    PORTB &= ~(1 << PB0);  // IN2 LOW
+    PORTD |= (1 << PD7);
+    PORTB &= ~(1 << PB0);
 
     // move right motor forward
-    PORTB |= (1 << PB1);   // IN3 HIGH
-    PORTB &= ~(1 << PB3);  // IN4 LOW
+    PORTB |= (1 << PB1);
+    PORTB &= ~(1 << PB3);
 }
 
 void moveBackward() {
 
     // move left motor backward
-    PORTD &= ~(1 << PD7);  // IN1 LOW
-    PORTB |= (1 << PB0);   // IN2 HIGH
+    PORTD &= ~(1 << PD7); 
+    PORTB |= (1 << PB0);
 
     // move right motor backward
-    PORTB &= ~(1 << PB1);  // IN3 LOW
-    PORTB |= (1 << PB3);   // IN4 HIGH
+    PORTB &= ~(1 << PB1);
+    PORTB |= (1 << PB3);
 }
 
 void turnLeft() {
-    // Left Motor Backward
-    PORTD &= ~(1 << PD7);  // IN1 LOW
-    PORTB |= (1 << PB0);   // IN2 HIGH
 
-    // Right Motor Forward
-    PORTB |= (1 << PB1);   // IN3 HIGH
-    PORTB &= ~(1 << PB3);  // IN4 LOW
+    // move left motor backward
+    PORTD &= ~(1 << PD7);
+    PORTB |= (1 << PB0);
+
+    // move right motor forward
+    PORTB |= (1 << PB1);
+    PORTB &= ~(1 << PB3);
 }
 
 void turnRight() {
-    // Left Motor Forward
-    PORTD |= (1 << PD7);   // IN1 HIGH
-    PORTB &= ~(1 << PB0);  // IN2 LOW
 
-    // Right Motor Backward
-    PORTB &= ~(1 << PB1);  // IN3 LOW
-    PORTB |= (1 << PB3);   // IN4 HIGH
+    // move left motor forward
+    PORTD |= (1 << PD7);
+    PORTB &= ~(1 << PB0);
+
+    // move right motor backward
+    PORTB &= ~(1 << PB1);
+    PORTB |= (1 << PB3);
 }
 
 void stopMotors() {
-    // Stop both motors
+
+    // sets both motors speed to 0
     changeDutyCycle(0, 0);
 }
