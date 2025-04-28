@@ -50,6 +50,8 @@ int main() {
   initSPI();
 
   while (1) {
+    
+    HandleMotorLogic();
     HandleFaceLogic();
   }
 
