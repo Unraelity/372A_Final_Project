@@ -8,10 +8,20 @@
 #include "motor.h"
 #include "spi.h"
 
+// constant definitions
+#define ACCELERATION_RATE 1  // per loop
+
 // funciton definitions
 void HandleFaceLogic();
 
 // enum definitions
+enum car_movement {
+  cruising,
+  accelerating,
+  deccerating,
+  stopped
+};
+
 enum led_display {
   smiley_face,
   frowny_face
