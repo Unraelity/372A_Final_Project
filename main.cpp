@@ -2,6 +2,8 @@
 // Due Date:        5/7/25
 // Assignment:      Final Project
 //----------------------------------------------------------------------
+// File Author:       Nick Brown
+//----------------------------------------------------------------------
 
 #include <Arduino.h>
 #include "timer.h"
@@ -14,7 +16,8 @@
 #define ACCELERATION_RATE 1  // per loop
 
 // funciton definitions
-void HandleMotorLogic();
+void HandleSpeedLogic();
+void HandleTurnLogic();
 void HandleFaceLogic();
 void Accelerate();
 void Deccelerate();
@@ -22,11 +25,20 @@ bool IsSpeedUnderMax();
 bool IsSpeedAtLeastMin();
 
 // enum definitions
+// state machine that controls car movement (acceleration, decceleration, constant and stopped)
 enum car_movement {
   cruising,
   accelerating,
   deccerating,
   stopped
+};
+
+// state machine that controls car direction
+enum car_dir {
+  forward,
+  backward,
+  left,
+  right
 };
 
 enum led_display {
@@ -56,7 +68,8 @@ int main() {
 
   while (1) {
 
-    HandleMotorLogic();
+    HandleSpeedLogic();
+    HandleTurnLogic();
     HandleFaceLogic();
     delayMs(LOOP_DELAY);
   }
@@ -64,7 +77,7 @@ int main() {
   return 0;
 }
 
-void HandleMotorLogic() {
+void HandleSpeedLogic() {
 
   switch (carState) {
     case cruising:
@@ -81,6 +94,10 @@ void HandleMotorLogic() {
     case stopped:
       break;
   }
+}
+
+void HandleTurnLogic() {
+
 }
 
 void HandleFaceLogic() {
