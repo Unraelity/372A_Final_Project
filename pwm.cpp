@@ -52,6 +52,6 @@ void changeDutyCycle(uint16_t leftMotorSpeed, uint16_t rightMotorSpeed) {
         rightMotorSpeed = 1023;
     }
 
-    OCR3A = leftMotorSpeed;   // Left Motor
-    OCR4A = rightMotorSpeed;  // Right Motor
+    OCR3A = leftMotorSpeed;   // left motor
+    OCR4A = rightMotorSpeed;  // right motor
 }
