@@ -12,8 +12,10 @@
 #include "spi.h"
 
 // constant definitions
-#define LOOP_DELAY 100       // delay between loops
-#define ACCELERATION_RATE 1  // per loop
+#define LOOP_DELAY 100         // delay between loops
+#define ACCELERATION_RATE 1    // per loop
+#define STOP_PROXIMITY 16      // distance object be within to cause car to stop 
+#define TURN_THRESHOLD 8       // distance car must at least be away from object in order to turn
 
 // funciton definitions
 void HandleSpeedLogic();
@@ -23,6 +25,9 @@ void Accelerate();
 void Deccelerate();
 bool IsSpeedUnderMax();
 bool IsSpeedAtLeastMin();
+bool IsWithinStopProximity();
+void CheckTurnThreshold();
+void GetCarDirection();
 
 // enum definitions
 // state machine that controls car movement (acceleration, decceleration, constant and stopped)
@@ -37,8 +42,8 @@ enum car_movement {
 enum car_dir {
   forward,
   backward,
-  left,
-  right
+  right,
+  left
 };
 
 enum led_display {
@@ -47,9 +52,12 @@ enum led_display {
 };
 
 // variable definitions
-car_movement carState = stopped;
+car_movement carMovementState = stopped;
+car_dir carDirState = forward;
 led_display faceState = smiley_face;
 uint16_t carSpeed = 0;
+bool obstacleDetected = false;
+car_dir lastTurnedDirection = left;
 
 int main() {
 
@@ -79,7 +87,7 @@ int main() {
 
 void HandleSpeedLogic() {
 
-  switch (carState) {
+  switch (carMovementState) {
     case cruising:
       break;
 
@@ -98,6 +106,37 @@ void HandleSpeedLogic() {
 
 void HandleTurnLogic() {
 
+  switch (carDirState) {
+    case forward:
+      if (!IsWithinStopProximity()) {
+        moveForward();
+      }
+      else {
+        CheckTurnThreshold();
+      }
+      break;
+    case backward:
+      CheckTurnThreshold();
+      break;
+    case right:
+      if (IsWithinStopProximity()) {
+        turnRight();
+      }
+      else {
+        moveForward();
+        carDirState = forward;
+      }
+      break;
+    case left:
+      if (IsWithinStopProximity) {
+        turnLeft();
+      }
+      else {
+        moveForward();
+        carDirState = forward;
+      }
+      break;
+  }
 }
 
 void HandleFaceLogic() {
@@ -118,7 +157,7 @@ void Accelerate() {
     carSpeed += ACCELERATION_RATE;
   }
   else {
-    carState = cruising;
+    carMovementState = cruising;
   }
 }
 
@@ -128,7 +167,7 @@ void Deccelerate() {
     carSpeed -= ACCELERATION_RATE;
   }
   else {
-    carState = stopped;
+    carMovementState = stopped;
   }
 }
 
@@ -148,4 +187,31 @@ bool IsSpeedAtLeastMin() {
   }
 
   return false;
+}
+
+bool IsWithinStopProximity() {
+  // if below STOP_PROXIMITY:
+    return true;
+  
+  return false;
+}
+
+void CheckTurnThreshold() {
+  // if below TURN_THRESHOLD:
+    moveBackward();
+    carDirState = backward;
+  // else
+    GetCarDirection();
+}
+
+void GetCarDirection() {
+
+  if (lastTurnedDirection == right) {
+    carDirState = left;
+    lastTurnedDirection = left;
+  }
+  else {
+    carDirState = right;
+    lastTurnedDirection = right;
+  }
 }
