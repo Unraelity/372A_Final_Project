@@ -4,11 +4,13 @@
 //----------------------------------------------------------------------
 
 #include <Arduino.h>
+#include "timer.h"
 #include "pwm.h"
 #include "motor.h"
 #include "spi.h"
 
 // constant definitions
+#define LOOP_DELAY 100       // delay between loops
 #define ACCELERATION_RATE 1  // per loop
 
 // funciton definitions
@@ -50,9 +52,10 @@ int main() {
   initSPI();
 
   while (1) {
-    
+
     HandleMotorLogic();
     HandleFaceLogic();
+    delayMs(LOOP_DELAY);
   }
 
   return 0;
