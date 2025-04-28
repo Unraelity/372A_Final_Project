@@ -16,8 +16,8 @@
 // funciton definitions
 void HandleMotorLogic();
 void HandleFaceLogic();
-void Accerate();
-void Deccerate();
+void Accelerate();
+void Deccelerate();
 bool IsSpeedUnderMax();
 bool IsSpeedAtLeastMin();
 
