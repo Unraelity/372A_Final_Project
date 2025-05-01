@@ -189,6 +189,7 @@ bool IsSpeedAtLeastMin() {
   return false;
 }
 
+// check if object is within a certain distance
 bool IsWithinStopProximity() {
   // if below STOP_PROXIMITY:
   if (ultrasonic_read() < STOP_PROXIMITY) {
@@ -198,8 +199,9 @@ bool IsWithinStopProximity() {
   return false;
 }
 
+// check that object is far away enough to turn
 void CheckTurnThreshold() {
-  // if below TURN_THRESHOLD:
+  
   if (ultrasonic_read() < TURN_THRESHOLD) {
     moveBackward();
     carDirState = backward;
