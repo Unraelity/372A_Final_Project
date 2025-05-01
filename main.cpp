@@ -61,6 +61,7 @@ led_display faceState = smiley_face;
 uint16_t carSpeed = 0;
 bool obstacleDetected = false;
 car_dir lastTurnedDirection = left;
+long distanceToObject = 0; 
 
 int main() {
 
@@ -80,6 +81,7 @@ int main() {
 
   while (1) {
 
+    distanceToObject = ultrasonic_read();
     HandleSpeedLogic();
     HandleTurnLogic();
     HandleFaceLogic();
@@ -194,7 +196,7 @@ bool IsSpeedAtLeastMin() {
 // check if object is within a certain distance
 bool IsWithinStopProximity() {
   // if below STOP_PROXIMITY:
-  if (ultrasonic_read() < STOP_PROXIMITY) {
+  if (distanceToObject < STOP_PROXIMITY) {
     Serial.println("Detected object");
     faceState = frowny_face;
     return true;
@@ -205,7 +207,7 @@ bool IsWithinStopProximity() {
 // check that object is far away enough to turn
 void CheckTurnThreshold() {
   
-  if (ultrasonic_read() < TURN_THRESHOLD) {
+  if (distanceToObject < TURN_THRESHOLD) {
     moveBackward();
     carDirState = backward;
   }
