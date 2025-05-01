@@ -110,6 +110,8 @@ void HandleSpeedLogic() {
       Serial.println("Stopped");
       break;
   }
+
+  changeDutyCycle(carSpeed, carSpeed);
 }
 
 void HandleTurnLogic() {
