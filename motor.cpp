@@ -31,9 +31,9 @@ void initMotorPins() {
     DDRH |= (1 << PH3);   // ENA as output
     DDRH |= (1 << PH4);   // ENB as output
 
-    // Start with motors disabled
-    PORTH &= ~(1 << PH3);
-    PORTH &= ~(1 << PH4);
+    // Start with motors enabled
+    PORTH |= (1 << PH3);
+    PORTH |= (1 << PH4);
 
 
 }
