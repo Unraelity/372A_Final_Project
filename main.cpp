@@ -162,6 +162,7 @@ void Accelerate() {
     carSpeed += ACCELERATION_RATE;
   }
   else {
+    carSpeed = MAX_DUTY_CYCLE;
     carMovementState = cruising;
   }
 }
@@ -172,6 +173,7 @@ void Deccelerate() {
     carSpeed -= ACCELERATION_RATE;
   }
   else {
+    carSpeed = MIN_DUTY_CYCLE;
     carMovementState = stopped;
   }
 }
