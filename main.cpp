@@ -10,6 +10,7 @@
 #include "pwm.h"
 #include "motor.h"
 #include "spi.h"
+#include "ultr_sonic.h"
 
 // constant definitions
 #define LOOP_DELAY 100         // delay between loops
@@ -70,6 +71,7 @@ int main() {
   initSPI();
   // initialize Timer
   initTimer0();
+  initTimer1();
   // initialize Motor
   initMotorPins();
 
@@ -189,18 +191,22 @@ bool IsSpeedAtLeastMin() {
 
 bool IsWithinStopProximity() {
   // if below STOP_PROXIMITY:
+  if (ultrasonic_read() < STOP_PROXIMITY) {
     Serial.println("Detected object");
     return true;
-  
+  }
   return false;
 }
 
 void CheckTurnThreshold() {
   // if below TURN_THRESHOLD:
+  if (ultrasonic_read() < TURN_THRESHOLD) {
     moveBackward();
     carDirState = backward;
-  // else:
+  }
+  else {
     GetCarDirection();
+  }
 }
 
 void GetCarDirection() {
