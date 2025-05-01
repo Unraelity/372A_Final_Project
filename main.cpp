@@ -194,6 +194,7 @@ bool IsWithinStopProximity() {
   // if below STOP_PROXIMITY:
   if (ultrasonic_read() < STOP_PROXIMITY) {
     Serial.println("Detected object");
+    faceState = frowny_face;
     return true;
   }
   return false;
@@ -230,6 +231,7 @@ void RightTurnLogic() {
   }
   else {
     moveForward();
+    faceState = smiley_face;
     carDirState = forward;
   }
 }
@@ -241,6 +243,7 @@ void LeftTurnLogic() {
   }
   else {
     moveForward();
+    faceState = smiley_face;
     carDirState = forward;
   }
 }
