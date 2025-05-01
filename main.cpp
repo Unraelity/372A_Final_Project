@@ -61,7 +61,7 @@ led_display faceState = smiley_face;
 uint16_t carSpeed = 0;
 bool obstacleDetected = false;
 car_dir lastTurnedDirection = left;
-long distanceToObject = 0; 
+long distanceToObject = 1000000; 
 
 int main() {
 
@@ -81,7 +81,7 @@ int main() {
 
   while (1) {
 
-    distanceToObject = ultrasonic_read();
+    //distanceToObject = ultrasonic_read();
     HandleSpeedLogic();
     HandleTurnLogic();
     HandleFaceLogic();
