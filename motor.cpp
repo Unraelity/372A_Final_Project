@@ -26,6 +26,9 @@ void initMotorPins() {
     DDRB |= (1 << PB1);  // set B1 to output -> IN2
     DDRB |= (1 << PB0);  // set B0 to output -> IN3
     DDRB |= (1 << PB2);  // set B2 to output -> IN4
+
+
+
 }
 
 void moveForward() {
