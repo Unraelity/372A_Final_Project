@@ -9,9 +9,7 @@ void ultrasonic_begin() {
     // Set ECHO as input
     DDRE &= ~(1 << PE5);
 
-    // Initialize timers
-    initTimer1();  // For microsecond delay
-    initTimer0();  // For millisecond delay (optional if needed)
+    
 }
 
 unsigned long measure_pulse() {
