@@ -65,6 +65,9 @@ long distanceToObject = 0;
 
 int main() {
 
+  // set baud rate for serial transmission, flush before printing anything
+  Serial.begin(9600);
+
   // initialization functions
   initPWMTimer3();
   initPWMTimer4();
@@ -75,9 +78,6 @@ int main() {
   initTimer1();
   // initialize Motor
   initMotorPins();
-
-  // set baud rate for serial transmission, flush before printing anything
-  Serial.begin(9600);
 
   while (1) {
 
