@@ -84,7 +84,7 @@ int main() {
     //distanceToObject = ultrasonic_read();
     HandleSpeedLogic();
     HandleTurnLogic();
-    HandleFaceLogic();
+    //HandleFaceLogic();
     delayMs(LOOP_DELAY);
   }
 
