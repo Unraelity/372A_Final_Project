@@ -91,17 +91,21 @@ void HandleSpeedLogic() {
 
   switch (carMovementState) {
     case cruising:
+      Serial.println("Cruising");
       break;
 
     case accelerating:
+      Serial.println("Accelerating");
       Accelerate();
       break;
 
     case deccerating:
+      Serial.println("Deccerating");
       Deccelerate();
       break;
 
     case stopped:
+      Serial.println("Stopped");
       break;
   }
 }
@@ -110,6 +114,7 @@ void HandleTurnLogic() {
 
   switch (carDirState) {
     case forward:
+      Serial.println("Moving Forward");
       if (!IsWithinStopProximity()) {
         moveForward();
       }
@@ -118,12 +123,15 @@ void HandleTurnLogic() {
       }
       break;
     case backward:
+      Serial.println("Moving Backward");
       CheckTurnThreshold();
       break;
     case right:
+      Serial.println("Moving Right");
       RightTurnLogic();
       break;
     case left:
+    Serial.println("Moving Left");
       LeftTurnLogic();
       break;
   }
@@ -181,6 +189,7 @@ bool IsSpeedAtLeastMin() {
 
 bool IsWithinStopProximity() {
   // if below STOP_PROXIMITY:
+    Serial.println("Detected object");
     return true;
   
   return false;
