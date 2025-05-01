@@ -26,16 +26,6 @@ void initMotorPins() {
     DDRB |= (1 << PB1);  // set B1 to output -> IN2
     DDRB |= (1 << PB0);  // set B0 to output -> IN3
     DDRB |= (1 << PB2);  // set B2 to output -> IN4
-
-    // Enable pins
-    DDRH |= (1 << PH3);   // ENA as output
-    DDRH |= (1 << PH4);   // ENB as output
-
-    // Start with motors enabled
-    PORTH |= (1 << PH3);
-    PORTH |= (1 << PH4);
-
-
 }
 
 void moveForward() {

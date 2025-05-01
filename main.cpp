@@ -101,19 +101,19 @@ void HandleSpeedLogic() {
     case accelerating:
       Serial.println("Accelerating");
       Accelerate();
+      changeDutyCycle(carSpeed, carSpeed);
       break;
 
     case deccerating:
       Serial.println("Deccerating");
       Deccelerate();
+      changeDutyCycle(carSpeed, carSpeed);
       break;
 
     case stopped:
       Serial.println("Stopped");
       break;
   }
-
-  changeDutyCycle(carSpeed, carSpeed);
 }
 
 void HandleTurnLogic() {
