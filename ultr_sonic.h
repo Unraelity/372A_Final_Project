@@ -4,6 +4,7 @@
 #include <avr/io.h>
 
 void ultrasonic_begin();
+unsigned long measure_pulse();
 unsigned long ultrasonic_read();
 
 #endif // ULTR_SONIC_H
