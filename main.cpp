@@ -218,6 +218,8 @@ void CheckTurnThreshold() {
   }
   else {
     GetCarDirection();
+    carSpeed = 0;
+    carMovementState = accelerating;
   }
 }
 
