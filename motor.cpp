@@ -22,10 +22,10 @@ IN3      IN4      Motor B Behavior
 // initialize motor direction pins
 void initMotorPins() {
     
-    DDRB |= (1 << PB3);  // set B3 to output -> IN1
-    DDRB |= (1 << PB1);  // set B1 to output -> IN2
-    DDRB |= (1 << PB0);  // set B0 to output -> IN3
-    DDRB |= (1 << PB2);  // set B2 to output -> IN4
+    DDRA |= (1 << PA0);  // set A2 to output -> IN1
+    DDRA |= (1 << PA1);  // set A0 to output -> IN2
+    DDRA |= (1 << PA2);  // set A1 to output -> IN3
+    DDRA |= (1 << PA3);  // set A3 to output -> IN4
 
 
 
@@ -34,66 +34,66 @@ void initMotorPins() {
 void moveForward() {
 
     // move left motor forward
-    PORTB |= (1 << PB3);
-    PORTB &= ~(1 << PB1);
+    PORTA |= (1 << PA0);
+    PORTA &= ~(1 << PA1);
 
     // move right motor forward
-    PORTB |= (1 << PB0);
-    PORTB &= ~(1 << PB2);
+    PORTA |= (1 << PA2);
+    PORTA &= ~(1 << PA3);
 }
 
 void moveBackward() {
 
     // move left motor backward
-    PORTB &= ~(1 << PB3); 
-    PORTB |= (1 << PB1);
+    PORTA &= ~(1 << PA0); 
+    PORTA |= (1 << PA1);
 
     // move right motor backward
-    PORTB &= ~(1 << PB0);
-    PORTB |= (1 << PB2);
+    PORTA &= ~(1 << PA2);
+    PORTA |= (1 << PA3);
 }
 
 void turnLeft() {
 
     // move left motor backward
-    PORTB &= ~(1 << PB3);
-    PORTB |= (1 << PB1);
+    PORTA &= ~(1 << PA0);
+    PORTA |= (1 << PA1);
 
     // move right motor forward
-    PORTB |= (1 << PB0);
-    PORTB &= ~(1 << PB2);
+    PORTA |= (1 << PA2);
+    PORTA &= ~(1 << PA3);
 }
 
 void turnRight() {
 
     // move left motor forward
-    PORTB |= (1 << PB3);
-    PORTB &= ~(1 << PB1);
+    PORTA |= (1 << PA0);
+    PORTA &= ~(1 << PA1);
 
     // move right motor backward
-    PORTB &= ~(1 << PB0);
-    PORTB |= (1 << PB2);
+    PORTA &= ~(1 << PA2);
+    PORTA |= (1 << PA3);
 }
 
 // stops over time
 void stopMotors() {
 
     // turn off left motor
-    PORTB &= ~(1 << PB3);
-    PORTB &= ~(1 << PB1);
+    PORTA &= ~(1 << PA0);
+    PORTA &= ~(1 << PA1);
 
     // turn off right motor
-    PORTB &= ~(1 << PB0);
-    PORTB &= ~(1 << PB2);
+    PORTA &= ~(1 << PA2);
+    PORTA &= ~(1 << PA3);
 }
 
 void brake() {
 
     // brake left wheel
-    PORTB |= (1 << PB3);
-    PORTB |= (1 << PB1);
+    PORTA |= (1 << PA0);
+    PORTA |= (1 << PA1);
 
     // brake right wheel
-    PORTB |= (1 << PB0);
-    PORTB |= (1 << PB2);
+    PORTA |= (1 << PA2);
+    PORTA |= (1 << PA3);
 }
