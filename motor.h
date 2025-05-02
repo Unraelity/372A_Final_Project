@@ -10,5 +10,6 @@ void moveBackward();
 void turnLeft();
 void turnRight();
 void stopMotors();
+void brake();
 
 #endif

@@ -123,7 +123,7 @@ void HandleTurnLogic() {
     case forward:
       Serial.println("Moving Forward");
       if (!IsWithinStopProximity()) {
-        moveForward();
+        brake();
       }
       else {
         CheckTurnThreshold();
