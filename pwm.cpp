@@ -39,7 +39,7 @@ void initPWMTimer4() {
     DDRH |= (1 << DDH3); // set Pin 6 on board to output, which is OC4C, PORTH5, PWM}
 
     ICR4 = 1023;
-    OCR4A = 1023;
+    OCR4A = 0;
 }
 
 void changeDutyCycle(uint16_t leftMotorSpeed, uint16_t rightMotorSpeed) {

@@ -14,7 +14,7 @@
 
 // constant definitions
 #define LOOP_DELAY 100         // delay between loops
-#define ACCELERATION_RATE 1    // per loop
+#define ACCELERATION_RATE 10    // per loop
 #define STOP_PROXIMITY 16      // distance object be within to cause car to stop 
 #define TURN_THRESHOLD 8       // distance car must at least be away from object in order to turn
 
