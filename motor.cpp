@@ -30,7 +30,7 @@ void initMotorPins() {
 
 void moveForward() {
 
-    Serial.println("In forward function");
+    //Serial.println("In forward function");
 
     // move left motor forward
     PORTB |= (1 << PB3);
@@ -43,7 +43,7 @@ void moveForward() {
 
 void moveBackward() {
 
-    Serial.println("In backward function");
+    //Serial.println("In backward function");
 
     // move left motor backward
     PORTB &= ~(1 << PB3); 
@@ -56,7 +56,7 @@ void moveBackward() {
 
 void turnLeft() {
 
-    Serial.println("In left function");
+    //Serial.println("In left function");
 
     // move left motor backward
     PORTB &= ~(1 << PB3);
@@ -69,7 +69,7 @@ void turnLeft() {
 
 void turnRight() {
 
-    Serial.println("In right function");
+    //Serial.println("In right function");
 
     // move left motor forward
     PORTB |= (1 << PB3);
@@ -83,7 +83,7 @@ void turnRight() {
 // stops over time
 void stopMotors() {
 
-    Serial.println("In stop function");
+    //Serial.println("In stop function");
 
     // turn off left motor
     PORTB &= ~(1 << PB3);
@@ -96,7 +96,7 @@ void stopMotors() {
 
 void brake() {
 
-    Serial.println("In break function");
+    //Serial.println("In break function");
 
     // brake left wheel
     PORTB |= (1 << PB3);
