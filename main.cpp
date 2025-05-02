@@ -78,6 +78,7 @@ int main() {
   initTimer1();
   // initialize Motor
   initMotorPins();
+  ultrasonic_begin();
 
   while (1) {
 
