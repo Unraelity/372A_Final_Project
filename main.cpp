@@ -82,7 +82,7 @@ int main() {
   while (1) {
 
     Serial.println(carSpeed);
-    //distanceToObject = ultrasonic_read();
+    distanceToObject = ultrasonic_read();
     HandleSpeedLogic();
     HandleTurnLogic();
     //HandleFaceLogic();
@@ -126,6 +126,8 @@ void HandleTurnLogic() {
         moveForward();
       }
       else {
+        carSpeed = 0;
+        carMovementState = accelerating;
         CheckTurnThreshold();
       }
       break;
