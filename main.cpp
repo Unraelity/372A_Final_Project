@@ -130,6 +130,7 @@ void HandleTurnLogic() {
     case forward:
       Serial.println("Moving Forward");
       if (!IsWithinStopProximity()) {
+        faceState = down_arrow;
         moveForward();
       }
       else {
