@@ -252,12 +252,10 @@ void GetCarDirection() {
   if (lastTurnedDirection == right) {
     carDirState = left;
     lastTurnedDirection = left;
-    faceState = right_arrow;
   }
   else {
     carDirState = right;
     lastTurnedDirection = right;
-    faceState = left_arrow;
   }
 }
 
@@ -265,6 +263,7 @@ void RightTurnLogic() {
 
   if (IsWithinStopProximity()) {
     turnRight();
+    faceState = left_arrow;
   }
   else {
     moveForward();
@@ -277,6 +276,7 @@ void LeftTurnLogic() {
 
   if (IsWithinStopProximity()) {
     turnLeft();
+    faceState = right_arrow;
   }
   else {
     moveForward();
