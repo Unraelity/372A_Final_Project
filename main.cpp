@@ -50,14 +50,17 @@ enum car_dir {
 };
 
 enum led_display {
-  smiley_face,
-  frowny_face
+  up_arrow,
+  down_arrow,
+  right_arrow,
+  left_arrow,
+  stop_sign
 };
 
 // variable definitions
 car_movement carMovementState = accelerating;
 car_dir carDirState = forward;
-led_display faceState = smiley_face;
+led_display faceState = down_arrow;
 uint16_t carSpeed = 0;
 bool obstacleDetected = false;
 car_dir lastTurnedDirection = left;
@@ -152,13 +155,22 @@ void HandleTurnLogic() {
 void HandleFaceLogic() {
 
   switch (faceState) {
-    case smiley_face:
-      smile();
+    case up_arrow:
+      upArrow();
       break;
-    case frowny_face:
-      frown();
+    case down_arrow:
+      downArrow();
       break;
-    }
+    case right_arrow:
+      rightArrow();
+      break;
+    case left_arrow:
+      leftArrow();
+      break;
+    case stop_sign:
+      allRed();
+      break;
+  }
 }
 
 void Accelerate() {
@@ -207,7 +219,7 @@ bool IsWithinStopProximity() {
   // if below STOP_PROXIMITY:
   if (distanceToObject < STOP_PROXIMITY) {
     Serial.println("Detected object");
-    faceState = frowny_face;
+    faceState = stop_sign;
     return true;
   }
   return false;
@@ -219,6 +231,7 @@ void CheckTurnThreshold() {
   if (distanceToObject < TURN_THRESHOLD) {
     moveBackward();
     carDirState = backward;
+    faceState = up_arrow;
   }
   else {
     GetCarDirection();
@@ -232,10 +245,12 @@ void GetCarDirection() {
   if (lastTurnedDirection == right) {
     carDirState = left;
     lastTurnedDirection = left;
+    faceState = right_arrow;
   }
   else {
     carDirState = right;
     lastTurnedDirection = right;
+    faceState = left_arrow;
   }
 }
 
@@ -246,7 +261,7 @@ void RightTurnLogic() {
   }
   else {
     moveForward();
-    faceState = smiley_face;
+    faceState = down_arrow;
     carDirState = forward;
   }
 }
@@ -258,7 +273,7 @@ void LeftTurnLogic() {
   }
   else {
     moveForward();
-    faceState = smiley_face;
+    faceState = down_arrow;
     carDirState = forward;
   }
 }

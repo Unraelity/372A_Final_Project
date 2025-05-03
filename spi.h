@@ -10,7 +10,10 @@
 void initSPI();
 void spi_read(unsigned char data);
 void spi_write(unsigned char address, unsigned char data);
-void smile();
-void frown();
+void upArrow();
+void downArrow();
+void leftArrow();
+void rightArrow();
+void allRed();
 
 #endif
