@@ -130,7 +130,7 @@ void HandleTurnLogic() {
     case forward:
       Serial.println("Moving Forward");
       if (!IsWithinStopProximity()) {
-        faceState = down_arrow;
+        faceState = up_arrow;
         moveForward();
       }
       else {
@@ -238,7 +238,7 @@ void CheckTurnThreshold() {
   if (distanceToObject < TURN_THRESHOLD) {
     moveBackward();
     carDirState = backward;
-    faceState = up_arrow;
+    faceState = down_arrow;
   }
   else {
     GetCarDirection();
@@ -267,7 +267,7 @@ void RightTurnLogic() {
   }
   else {
     moveForward();
-    faceState = down_arrow;
+    faceState = up_arrow;
     carDirState = forward;
   }
 }
@@ -280,7 +280,7 @@ void LeftTurnLogic() {
   }
   else {
     moveForward();
-    faceState = down_arrow;
+    faceState = up_arrow;
     carDirState = forward;
   }
 }
