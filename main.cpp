@@ -88,6 +88,7 @@ int main() {
   while (1) {
 
     Serial.println(carSpeed);
+    Serial.println(faceState);
     distanceToObject = ultrasonic_read();
     HandleSpeedLogic();
     HandleTurnLogic();
