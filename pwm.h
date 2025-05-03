@@ -5,7 +5,7 @@
 #include <Arduino.h>
 
 // constant definitions
-#define MIN_DUTY_CYCLE 0
+#define MIN_DUTY_CYCLE 450
 #define MAX_DUTY_CYCLE 1024
 
 void initPWMTimer3();

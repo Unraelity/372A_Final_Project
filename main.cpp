@@ -15,8 +15,8 @@
 // constant definitions
 #define LOOP_DELAY 100         // delay between loops
 #define ACCELERATION_RATE 10    // per loop
-#define STOP_PROXIMITY 16      // distance object be within to cause car to stop 
-#define TURN_THRESHOLD 8       // distance car must at least be away from object in order to turn
+#define STOP_PROXIMITY 8      // distance object be within to cause car to stop 
+#define TURN_THRESHOLD 4       // distance car must at least be away from object in order to turn
 
 // funciton definitions
 void HandleSpeedLogic();
@@ -64,6 +64,8 @@ car_dir lastTurnedDirection = left;
 long distanceToObject = 1000000; 
 
 int main() {
+
+  carSpeed = MIN_DUTY_CYCLE;
 
   // set baud rate for serial transmission, flush before printing anything
   Serial.begin(9600);
@@ -127,7 +129,7 @@ void HandleTurnLogic() {
         moveForward();
       }
       else {
-        carSpeed = 0;
+        carSpeed = MIN_DUTY_CYCLE;
         carMovementState = accelerating;
         CheckTurnThreshold();
       }
@@ -160,8 +162,9 @@ void HandleFaceLogic() {
 }
 
 void Accelerate() {
-
+  
   if (IsSpeedUnderMax()) {
+    
     carSpeed += ACCELERATION_RATE;
   }
   else {
@@ -219,7 +222,7 @@ void CheckTurnThreshold() {
   }
   else {
     GetCarDirection();
-    carSpeed = 0;
+    carSpeed = MIN_DUTY_CYCLE;
     carMovementState = accelerating;
   }
 }
