@@ -88,7 +88,6 @@ int main() {
   while (1) {
 
     Serial.println(carSpeed);
-    Serial.println(faceState);
     distanceToObject = ultrasonic_read();
     HandleSpeedLogic();
     HandleTurnLogic();
@@ -158,18 +157,23 @@ void HandleFaceLogic() {
 
   switch (faceState) {
     case up_arrow:
+      Serial.println("In Up-Arrow State");
       upArrow();
       break;
     case down_arrow:
+      Serial.println("In Down-Arrow State");
       downArrow();
       break;
     case right_arrow:
+      Serial.println("In Right-Arrow State");
       rightArrow();
       break;
     case left_arrow:
+      Serial.println("In Left-Arrow State");
       leftArrow();
       break;
     case stop_sign:
+      Serial.println("In Stop Sign State");
       allRed();
       break;
   }
