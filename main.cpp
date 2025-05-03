@@ -51,7 +51,6 @@ enum car_dir {
 
 enum led_display {
   up_arrow,
-  down_arrow,
   right_arrow,
   left_arrow,
   stop_sign
@@ -60,7 +59,7 @@ enum led_display {
 // variable definitions
 car_movement carMovementState = accelerating;
 car_dir carDirState = forward;
-led_display faceState = down_arrow;
+led_display faceState = up_arrow;
 uint16_t carSpeed = 0;
 bool obstacleDetected = false;
 car_dir lastTurnedDirection = left;
@@ -161,10 +160,6 @@ void HandleFaceLogic() {
       Serial.println("In Up-Arrow State");
       upArrow();
       break;
-    case down_arrow:
-      Serial.println("In Down-Arrow State");
-      downArrow();
-      break;
     case right_arrow:
       Serial.println("In Right-Arrow State");
       rightArrow();
@@ -238,7 +233,7 @@ void CheckTurnThreshold() {
   if (distanceToObject < TURN_THRESHOLD) {
     moveBackward();
     carDirState = backward;
-    faceState = down_arrow;
+    faceState = stop_sign;
   }
   else {
     GetCarDirection();
