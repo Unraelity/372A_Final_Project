@@ -55,35 +55,25 @@ void display(const unsigned char *data)
 
 void upArrow() {
     unsigned char up[8] = {0x10, 0x38, 0x7C, 0x10, 0x10, 0x10, 0x10, 0x00};
-    for (unsigned char i = 0; i < 8; i++) {
-        spi_write(i + 1, up[i]);
-    }
+    display(up);
 }
 
 void downArrow() {
     unsigned char down[8] = {0x00, 0x10, 0x10, 0x10, 0x10, 0x7C, 0x38, 0x10};
-    for (unsigned char i = 0; i < 8; i++) {
-        spi_write(i + 1, down[i]);
-    }
+    display(down);
 }
 
 void leftArrow() {
     unsigned char left[8] = {0x10, 0x08, 0x04, 0x7F, 0x04, 0x08, 0x10, 0x00};
-    for (unsigned char i = 0; i < 8; i++) {
-        spi_write(i + 1, left[i]);
-    }
+    display(left);
 }
 
 void rightArrow() {
     unsigned char right[8] = {0x04, 0x08, 0x10, 0x7F, 0x10, 0x08, 0x04, 0x00};
-    for (unsigned char i = 0; i < 8; i++) {
-        spi_write(i + 1, right[i]);
-    }
+    display(right);
 }
 
 void allRed() {
     unsigned char all[8] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
-    for (unsigned char i = 0; i < 8; i++) {
-        spi_write(i + 1, all[i]);
-    }
+    display(all);
 }

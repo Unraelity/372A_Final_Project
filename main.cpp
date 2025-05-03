@@ -78,6 +78,7 @@ int main() {
   initPWMTimer4();
   // initialize SPI
   initSPI();
+  downArrow();
   // initialize Timer
   initTimer0();
   initTimer1();
