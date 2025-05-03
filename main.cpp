@@ -16,7 +16,7 @@
 #define LOOP_DELAY 100         // delay between loops
 #define ACCELERATION_RATE 10    // per loop
 #define STOP_PROXIMITY 8      // distance object be within to cause car to stop 
-#define TURN_THRESHOLD 4       // distance car must at least be away from object in order to turn
+#define TURN_THRESHOLD 6       // distance car must at least be away from object in order to turn
 
 // funciton definitions
 void HandleSpeedLogic();
